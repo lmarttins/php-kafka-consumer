@@ -21,7 +21,7 @@ class PhpKafkaConsumerCommand extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->config = config('php-kafka-consumer');
+        $this->config = config('kafka');
     }
 
     public function handle()
@@ -38,9 +38,9 @@ class PhpKafkaConsumerCommand extends Command
 
         $config = new \Kafka\Consumer\Entities\Config(
             new \Kafka\Consumer\Entities\Config\Sasl(
-                $this->config['sasl']['username'],
-                $this->config['sasl']['password'],
-                $this->config['sasl']['mechanisms']
+                'username',
+                'password',
+                'mechanisms'
             ),
             $this->getTopics(),
             $this->config['broker'],

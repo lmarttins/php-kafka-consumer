@@ -56,11 +56,15 @@ class Consumer
         $conf->set('queued.max.messages.kbytes', '10000');
         $conf->set('enable.auto.commit', 'false');
         $conf->set('compression.codec', 'gzip');
-        $conf->set('max.poll.interval.ms', '86400000');
+        // $conf->set('max.poll.interval.ms', '86400000');
         $conf->set('group.id', $this->config->getGroupId());
         $conf->set('bootstrap.servers', $this->config->getBroker());
-        $conf->set('security.protocol', $this->config->getSecurityProtocol());
-        $conf->setDefaultTopicConf($topicConf);
+
+        if ($this->config->getSecurityProtocol()) {
+            $conf->set('security.protocol', $this->config->getSecurityProtocol());
+        }
+
+        // $conf->setDefaultTopicConf($topicConf);
 
         if ($this->config->isPlainText()) {
             $conf->set('sasl.username', $this->config->getSasl()->getUsername());
