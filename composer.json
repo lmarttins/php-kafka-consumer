@@ -1,5 +1,5 @@
 {
-  "name": "arquivei/php-kafka-consumer",
+  "name": "lmarttins/php-kafka-consumer",
   "description": "A consumer of Kafka in PHP",
   "keywords": [
     "php",
