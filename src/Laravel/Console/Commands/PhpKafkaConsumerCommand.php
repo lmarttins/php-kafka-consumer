@@ -38,9 +38,9 @@ class PhpKafkaConsumerCommand extends Command
 
         $config = new \Kafka\Consumer\Entities\Config(
             new \Kafka\Consumer\Entities\Config\Sasl(
-                'username',
-                'password',
-                'mechanisms'
+                $this->config['sasl']['username'],
+                $this->config['sasl']['password'],
+                $this->config['sasl']['mechanisms']
             ),
             $this->getTopics(),
             $this->config['broker'],
